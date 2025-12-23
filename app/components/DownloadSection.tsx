@@ -69,6 +69,7 @@ export function DownloadSection() {
         size="xl"
         className="container"
         style={{ position: "relative", zIndex: 1 }}
+        maw="82%"
       >
         {/* Header */}
         <Stack

@@ -113,8 +113,8 @@ export function HeroSection() {
               <Box
                 style={{
                   position: "absolute",
-                  top: "clamp(-40px, -5vw, -40px)",
-                  right: "clamp(-30px, -5vw, -40px)",
+                  top: "clamp(-36px, -5vw, -30px)",
+                  right: "clamp(-26px, -5vw, -40px)",
                   width: "clamp(50px, 12vw, 40px)",
                   height: "clamp(50px, 12vw, 40px)",
                   pointerEvents: "none",
