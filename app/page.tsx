@@ -1,66 +1,66 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import { Box, Stack } from "@mantine/core";
+import { useEffect, useState } from "react";
+import { HeaderBar } from "./components/HeaderBar";
+import { HeroSection } from "./components/HeroSection";
+import { FeesSection } from "./components/FeesSection";
+import { DownloadSection } from "./components/DownloadSection";
+import { WhySection } from "./components/WhySection";
+import { CTASection } from "./components/CTASection";
+import { Footer } from "./components/Footer";
+import { DownloadModal } from "./components/DownloadModal";
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -80px 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("fade-visible");
+        }
+      });
+    }, observerOptions);
+
+    const sections = document.querySelectorAll(".section-fade");
+    sections.forEach((section) => observer.observe(section));
+
+    const fadeElements = document.querySelectorAll(".element-fade");
+    fadeElements.forEach((element) => observer.observe(element));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+      fadeElements.forEach((element) => observer.unobserve(element));
+    };
+  }, []);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <Box style={{ background: "#fafbff", minHeight: "100vh" }}>
+      <Stack gap={0}>
+        <Box
+          style={{
+            opacity: isModalOpen ? 0 : 1,
+            visibility: isModalOpen ? "hidden" : "visible",
+            transition: "opacity 0.3s ease, visibility 0.3s ease",
+          }}
+        >
+          <HeaderBar />
+        </Box>
+        {/* Spacer for fixed header */}
+        <Box h={80} />
+        <HeroSection />
+        <FeesSection />
+        <DownloadSection />
+        <WhySection />
+        <CTASection />
+        <Footer />
+      </Stack>
+      <DownloadModal onOpenChange={setIsModalOpen} />
+    </Box>
   );
 }
