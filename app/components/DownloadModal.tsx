@@ -101,6 +101,7 @@ export function DownloadModal({ onOpenChange }: DownloadModalProps) {
       <Card
         radius={32}
         padding={48}
+        className="download-modal-card"
         style={{
           background: "linear-gradient(145deg, #ffffff 0%, #f8fafc 100%)",
           border: "1px solid rgba(226,232,240,0.8)",
@@ -135,14 +136,18 @@ export function DownloadModal({ onOpenChange }: DownloadModalProps) {
               size={72}
               radius="xl"
               variant="light"
-              className="icon-orbit"
+              className="icon-orbit download-modal-icon"
               style={{
                 background: "linear-gradient(135deg, #fb923c 0%, #3b82f6 100%)",
                 color: "white",
                 boxShadow: "0 12px 32px rgba(244,121,32,0.35)",
               }}
             >
-              <IconQrcode size={36} stroke={2.5} />
+              <IconQrcode
+                size={36}
+                stroke={2.5}
+                className="download-modal-icon-svg"
+              />
             </ThemeIcon>
             <Title
               order={2}
@@ -175,6 +180,7 @@ export function DownloadModal({ onOpenChange }: DownloadModalProps) {
 
           {/* QR Code */}
           <Box
+            className="download-modal-qr"
             style={{
               position: "relative",
               width: 200,
@@ -203,11 +209,16 @@ export function DownloadModal({ onOpenChange }: DownloadModalProps) {
           </Box>
 
           {/* Download Buttons */}
-          <Stack gap={12} style={{ width: "100%", maxWidth: 400 }}>
+          <Stack
+            gap={12}
+            className="download-modal-buttons"
+            style={{ width: "100%", maxWidth: 400 }}
+          >
             <Text
               size="sm"
               fw={600}
               ta="center"
+              className="download-modal-buttons-label"
               style={{
                 color: "#64748b",
                 fontSize: 13,
@@ -216,12 +227,18 @@ export function DownloadModal({ onOpenChange }: DownloadModalProps) {
             >
               Or download from
             </Text>
-            <Group gap={10} justify="center" wrap="wrap">
+            <Group
+              gap={10}
+              justify="center"
+              wrap="wrap"
+              className="download-modal-buttons-group"
+            >
               {downloadLinks.map((store) => (
                 <Box
                   key={store.label}
                   component="a"
                   href={store.href}
+                  className="download-modal-button card-3d"
                   style={{
                     background: "transparent",
                     borderRadius: 10,
@@ -232,7 +249,6 @@ export function DownloadModal({ onOpenChange }: DownloadModalProps) {
                     border: "1px solid rgba(148,163,184,0.3)",
                     textDecoration: "none",
                   }}
-                  className="card-3d"
                 >
                   <Group gap={12} align="center" wrap="nowrap">
                     <Box

@@ -23,7 +23,7 @@ export function DownloadSection() {
   return (
     <section
       id="download"
-      className="section-fade fade-from-bottom"
+      className="section-fade fade-from-bottom download-section-mobile"
       style={{
         position: "relative",
         overflow: "hidden",
@@ -67,7 +67,7 @@ export function DownloadSection() {
 
       <Container
         size="xl"
-        className="container"
+        className="container download-section-container"
         style={{ position: "relative", zIndex: 1 }}
         maw="82%"
       >
@@ -191,9 +191,10 @@ export function DownloadSection() {
             </SimpleGrid>
 
             {/* Download Buttons */}
-            <Stack gap={12}>
+            <Stack gap={12} className="download-section-buttons-wrapper">
               <Text
                 fw={600}
+                className="download-section-buttons-label"
                 style={{
                   fontSize: "clamp(14px, 2vw, 16px)",
                   color: "#0f172a",
@@ -202,7 +203,11 @@ export function DownloadSection() {
               >
                 Available on
               </Text>
-              <Group gap={12} wrap="wrap">
+              <Group
+                gap={12}
+                wrap="wrap"
+                className="download-section-buttons-group"
+              >
                 {[
                   {
                     topText: "Download on the",
@@ -228,6 +233,7 @@ export function DownloadSection() {
                 ].map((store) => (
                   <Box
                     key={store.mainText}
+                    className="download-section-button card-3d"
                     style={{
                       background: "transparent",
                       borderRadius: 10,
@@ -237,7 +243,6 @@ export function DownloadSection() {
                       width: "fit-content",
                       border: "1px solid rgba(148,163,184,0.3)",
                     }}
-                    className="card-3d"
                   >
                     <Group gap={12} align="center" wrap="nowrap">
                       <Box
@@ -298,7 +303,7 @@ export function DownloadSection() {
               <Card
                 radius={20}
                 padding={24}
-                className="card-3d"
+                className="card-3d download-qr-card"
                 style={{
                   background: "#ffffff",
                   border: "1px solid #e5e7eb",

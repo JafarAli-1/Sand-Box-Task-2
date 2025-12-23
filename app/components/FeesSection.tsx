@@ -112,13 +112,13 @@ export function FeesSection() {
             <Group
               grow
               gap="md"
-              className="element-fade fade-from-bottom"
+              className="element-fade fade-from-bottom fees-inputs-group"
               style={{
                 alignItems: "flex-end",
                 flexWrap: "wrap",
               }}
             >
-              <Stack gap={6} style={{ minWidth: 160 }}>
+              <Stack gap={6} className="fees-input-stack" style={{ minWidth: 160 }}>
                 <Text size="xs" c="dimmed">
                   Amount
                 </Text>
@@ -126,6 +126,7 @@ export function FeesSection() {
                   defaultValue="1,000"
                   size="md"
                   radius="md"
+                  className="fees-text-input"
                   styles={{
                     input: {
                       fontSize: 14,
@@ -134,7 +135,7 @@ export function FeesSection() {
                 />
               </Stack>
 
-              <Stack gap={6} style={{ minWidth: 220 }}>
+              <Stack gap={6} className="fees-input-stack" style={{ minWidth: 220 }}>
                 <Text size="xs" c="dimmed">
                   From
                 </Text>
@@ -143,6 +144,7 @@ export function FeesSection() {
                   size="md"
                   radius="md"
                   rightSection={<span style={{ fontSize: 12 }}>▼</span>}
+                  className="fees-text-input"
                   styles={{
                     input: {
                       fontSize: 14,
@@ -151,7 +153,7 @@ export function FeesSection() {
                 />
               </Stack>
 
-              <Stack gap={6} style={{ minWidth: 220 }}>
+              <Stack gap={6} className="fees-input-stack" style={{ minWidth: 220 }}>
                 <Text size="xs" c="dimmed">
                   To
                 </Text>
@@ -160,6 +162,7 @@ export function FeesSection() {
                   size="md"
                   radius="md"
                   rightSection={<span style={{ fontSize: 12 }}>▼</span>}
+                  className="fees-text-input"
                   styles={{
                     input: {
                       fontSize: 14,
